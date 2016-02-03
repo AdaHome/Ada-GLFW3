@@ -1,8 +1,4 @@
-with Interfaces.C;
-
-package GLFW.Hints is
-
-   use Interfaces.C;
+package GLFW3.Hints is
 
    type Hint is new int;
 

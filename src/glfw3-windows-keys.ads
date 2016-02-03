@@ -1,9 +1,9 @@
-package GLFW.Displays.Windows.Keys is
+package GLFW3.Windows.Keys is
 
-   type Action is
+   type Key_Action is
      (
-      Release,
-      Press
+      Key_Action_Release,
+      Key_Action_Press
      );
 
    type Key is
@@ -131,18 +131,21 @@ package GLFW.Displays.Windows.Keys is
       Key_Menu
      );
 
-
-   function Get (W : Window; A : Key) return Action;
+    function Get_Key (W : Window; K : Key) return Key_Action with
+     Import,
+     Convention => C,
+     External_Name => "glfwGetKey",
+     Pre => W /= Null_Window;
 
 private
 
-   for Action use
+   for Key_Action use
      (
-      Release => 0,
-      Press => 1
+      Key_Action_Release => 0,
+      Key_Action_Press => 1
      );
-   for Action'Size use int'Size;
-   pragma Convention (C, Action);
+   for Key_Action'Size use int'Size;
+   pragma Convention (C, Key_Action);
 
    for Key use
      (
