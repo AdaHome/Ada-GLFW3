@@ -13,6 +13,8 @@ package GLFW3.Windows is
      Post => Create_Window'Result /= Null_Window;
    pragma Warnings (On);
 
+   function Create_Window2 (Width : Window_Width; Height : Window_Height; Title : String; Primary : Monitor := Null_Monitor; Share : Window := Null_Window) return Window;
+
    procedure Destroy_Window (W : Window) with
      Import,
      Convention => C,

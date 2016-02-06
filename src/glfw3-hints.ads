@@ -9,14 +9,11 @@ package GLFW3.Hints is
    type Natural_Hint is new Hint range 0 .. Hint'Last;
 
 
-
-
-
    type Target is
      (
       Focused,
       Iconified,
-      Resizable,
+      Target_Resizable,
       Visible,
       Decorated,
       Auto_Iconify,
@@ -47,11 +44,40 @@ package GLFW3.Hints is
       Opengl_Profile,
       Context_Release_Behavior
      );
+
+
+   type Accumulation_Value is new int range 0 .. int'Last;
+   type Accumulation_Target is
+     (
+      Accumulation_Target_Red_Bits,
+      Accumulation_Target_Green_Bits,
+      Accumulation_Target_Blue_Bits,
+      Accumulation_Target_Alpha_Bits
+     );
+
+
+
+
+   procedure Set_Window_Hint (T : Target; Value : int) with
+     Import,
+     Convention => C,
+     External_Name => "glfwWindowHint";
+
+   procedure Set_Window_Hint (T : Accumulation_Target; Value : Accumulation_Value) with
+     Import,
+     Convention => C,
+     External_Name => "glfwWindowHint";
+
+
+
+
+private
+
    for Target use
      (
       Focused                  => 16#00020001#,
       Iconified                => 16#00020002#,
-      Resizable                => 16#00020003#,
+      Target_Resizable                => 16#00020003#,
       Visible                  => 16#00020004#,
       Decorated                => 16#00020005#,
       Auto_Iconify             => 16#00020006#,
@@ -86,19 +112,19 @@ package GLFW3.Hints is
    pragma Convention (C, Target);
 
 
-   type Natural_Target is new Target range Red_Bits .. Refresh_Rate;
 
 
+   for Accumulation_Target'Size use int'Size;
 
-   procedure Set (T : Target; Value : int) with
-     Import,
-     Convention => C,
-     External_Name => "glfwWindowHint";
+   for Accumulation_Target use
+     (
+      Accumulation_Target_Red_Bits => 16#00021007#,
+      Accumulation_Target_Green_Bits => 16#00021008#,
+      Accumulation_Target_Blue_Bits => 16#00021009#,
+      Accumulation_Target_Alpha_Bits => 16#0002100A#
+     );
 
-    procedure Set (Target : Natural_Target; Value : Natural_Hint) with
-     Import,
-     Convention => C,
-     External_Name => "glfwWindowHint";
+   pragma Convention (C, Accumulation_Target);
 
 
 end;
