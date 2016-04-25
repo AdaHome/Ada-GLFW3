@@ -7,10 +7,15 @@
 *.lexch
 *.db
 *.xml
-*.a
+*.ada.a
 *.db-wal
 *.db-shm
 *.#*
 *.xml
 *.TMP
 b_*
+*.svg
+*.js
+*.png
+*.html
+*.css

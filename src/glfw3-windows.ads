@@ -1,7 +1,7 @@
 package GLFW3.Windows is
 
-   type Window_Width is new int;
-   type Window_Height is new int;
+   type Window_Width is new int range 1 .. int'Last;
+   type Window_Height is new int range 1 .. int'Last;
    type Window_Title is new char_array;
    type Window_Close_Flag is new int;
 
@@ -13,7 +13,7 @@ package GLFW3.Windows is
      Post => Create_Window'Result /= Null_Window;
    pragma Warnings (On);
 
-   function Create_Window2 (Width : Window_Width; Height : Window_Height; Title : String; Primary : Monitor := Null_Monitor; Share : Window := Null_Window) return Window;
+   function Create_Window_Ada (Width : Window_Width; Height : Window_Height; Title : String; Primary : Monitor := Null_Monitor; Share : Window := Null_Window) return Window;
 
    procedure Destroy_Window (W : Window) with
      Import,

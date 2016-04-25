@@ -18,7 +18,7 @@ library project GLFW3 is
 	end Binder;
 
 	package Linker is
-		for Linker_Options use ("-Llib/glfw-3.1.1.bin.WIN32/lib-mingw",  "-lglfw3", "-lOpenGL32", "-lgdi32");
+		for Linker_Options use ("-Llib/glfw-3.1.2.bin.WIN32/lib-mingw",  "-lglfw3", "-lOpenGL32", "-lgdi32");
 	end Linker;
 
 end GLFW3;
