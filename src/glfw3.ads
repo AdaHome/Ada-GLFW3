@@ -27,6 +27,11 @@ package GLFW3 is
      Convention => C,
      External_Name => "glfwWaitEvents";
 
+   function Clock return double with
+     Import,
+     Convention => C,
+     External_Name => "glfwGetTime";
+
 
 private
 
