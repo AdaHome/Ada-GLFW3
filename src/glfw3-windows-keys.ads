@@ -137,6 +137,8 @@ package GLFW3.Windows.Keys is
      External_Name => "glfwGetKey",
      Pre => W /= Null_Window;
 
+   type Key_Array is array (Key) of Key_Action;
+
 private
 
    for Key_Action use
