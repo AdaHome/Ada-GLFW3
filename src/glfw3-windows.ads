@@ -34,6 +34,9 @@ package GLFW3.Windows is
      External_Name => "glfwWindowShouldClose",
      Pre => W /= Null_Window;
 
+   -- This function swaps the front and back buffers of the specified window.
+   -- If the swap interval is greater than zero, the GPU driver waits the specified
+   -- number of screen updates before swapping the buffers.
    procedure Swap_Buffers (W : Window) with
      Import,
      Convention => C,
