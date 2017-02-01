@@ -1,3 +1,5 @@
+with Interfaces.C.Strings; use Interfaces.C.Strings;
+
 package GLFW3.Windows is
 
    type Window_Width is new int range 1 .. int'Last;
@@ -42,6 +44,15 @@ package GLFW3.Windows is
      Convention => C,
      External_Name => "glfwSwapBuffers",
      Pre => W /= Null_Window;
+
+
+   type Error_Procedure is access procedure (Error : int; Description : chars_ptr)
+     with Convention => C;
+
+   procedure Set_Error_Procedure (P : Error_Procedure) with
+     Import,
+     Convention => C,
+     External_Name => "glfwSetErrorCallback";
 
 
 end;
