@@ -1,5 +1,7 @@
 package GLFW3.Windows.Keys is
 
+
+
    type Key_Action is
      (
       Key_Action_Release,
@@ -130,6 +132,22 @@ package GLFW3.Windows.Keys is
       Key_Right_Super,
       Key_Menu
      );
+
+   --typedef void(* GLFWkeyfun) (GLFWwindow *, int, int, int, int)
+   type Key_Callback_Procedure is access procedure (W : Window; K : Key; Scancode : int; A : Key_Action; Mods : int) with Convention => C;
+   --GLFWkeyfun glfwSetKeyCallback (GLFWwindow * window, GLFWkeyfun cbfun)
+
+   function Set_Key_Callback_Procedure (W : Window; P : Key_Callback_Procedure) return Key_Callback_Procedure with
+     Import,
+     Convention => C,
+     External_Name => "glfwSetKeyCallback",
+     Pre => W /= Null_Window;
+
+   procedure Set_Key_Callback_Procedure (W : Window; P : Key_Callback_Procedure) with
+     Import,
+     Convention => C,
+     External_Name => "glfwSetKeyCallback",
+     Pre => W /= Null_Window;
 
     function Get_Key (W : Window; K : Key) return Key_Action with
      Import,
@@ -275,5 +293,7 @@ private
      );
    for Key'Size use int'Size;
    pragma Convention (C, Key);
+
+
 
 end;
