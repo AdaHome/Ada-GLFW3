@@ -1,21 +1,26 @@
 with System;
 with Interfaces.C;
+with System.Storage_Elements;
 
 package GLFW3 is
 
+   pragma Pure;
+
+
    use System;
    use Interfaces.C;
+   use System.Storage_Elements;
 
    type Window is private;
    type Monitor is private;
 
-
-
-   Null_Window : constant Window;
-   Null_Monitor : constant Monitor;
-
+   --pragma Preelaborable_Initialization (Window);
 
    procedure Initialize;
+   procedure Terminate_GLFW3 with
+     Import,
+     Convention => C,
+     External_Name => "glfwTerminate";
 
    procedure Poll_Events with
      Import,
@@ -35,11 +40,10 @@ package GLFW3 is
 
 private
 
-   type Window is new Address;
-   type Monitor is new Address;
-   type Procedure_Address is new Address;
+   type Window is new Integer_Address;
+   type Monitor is new Integer_Address;
+   type Procedure_Address is new Integer_Address;
 
-   Null_Window : constant Window := Window (Null_Address);
-   Null_Monitor : constant Monitor := Monitor (Null_Address);
+
 
 end;

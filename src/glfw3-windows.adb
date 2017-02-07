@@ -1,5 +1,5 @@
-with Ada.Text_IO;
-with Ada.Exceptions;
+--with Ada.Text_IO;
+--with Ada.Exceptions;
 
 package body GLFW3.Windows is
 

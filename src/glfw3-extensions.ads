@@ -23,9 +23,9 @@ package GLFW3.Extensions is
 
 private
 
-   type Procedure_Address is new Address;
+   type Procedure_Address is new Integer_Address;
 
-   Null_Procedure_Address : constant Procedure_Address := Procedure_Address (Null_Address);
-   GLFW_NO_CURRENT_CONTEXT : constant Procedure_Address := Procedure_Address (To_Address (16#00010002#));
+   Null_Procedure_Address : constant Procedure_Address := 0;
+   GLFW_NO_CURRENT_CONTEXT : constant Procedure_Address := 16#00010002#;
 
 end;

@@ -7,7 +7,7 @@ package body GLFW3.Extensions is
 
    function To_Address (Name : Procedure_Address) return Address is
    begin
-      return Address (Name);
+      return System.Storage_Elements.To_Address (Integer_Address (Name));
    end;
 
 end;
