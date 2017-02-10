@@ -1,20 +1,8 @@
-with System;
 with Interfaces.C;
-with System.Storage_Elements;
 
 package GLFW3 is
 
-   pragma Pure;
-
-
-   use System;
    use Interfaces.C;
-   use System.Storage_Elements;
-
-   type Window is private;
-   type Monitor is private;
-
-   --pragma Preelaborable_Initialization (Window);
 
    procedure Initialize;
    procedure Terminate_GLFW3 with
@@ -38,11 +26,6 @@ package GLFW3 is
      External_Name => "glfwGetTime";
 
 
-private
-
-   type Window is new Integer_Address;
-   type Monitor is new Integer_Address;
-   type Procedure_Address is new Integer_Address;
 
 
 

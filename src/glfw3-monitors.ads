@@ -1,4 +1,11 @@
+with System;
+with System.Storage_Elements;
+
 package GLFW3.Monitors is
+
+   type Monitor is private;
+
+   Null_Monitor : constant Monitor;
 
    type Monitor_Width is new int with Convention => C;
 
@@ -27,7 +34,10 @@ package GLFW3.Monitors is
 
 private
 
+   use System.Storage_Elements;
 
+   type Monitor is new Integer_Address;
 
+   Null_Monitor : constant Monitor := 0;
 
 end;

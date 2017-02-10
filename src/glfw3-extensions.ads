@@ -2,6 +2,7 @@ with System.Storage_Elements;
 
 package GLFW3.Extensions is
 
+   use System;
    use System.Storage_Elements;
 
    type Procedure_Address is private;
