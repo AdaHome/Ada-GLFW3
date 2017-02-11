@@ -78,6 +78,14 @@ package GLFW3.Windows is
      External_Name => "glfwGetWindowUserPointer",
      Pre => W /= Null_Window;
 
+   procedure Set_Window_Should_Close (W : Window; Value : int) with
+     Import,
+     Convention => C,
+     External_Name => "glfwSetWindowShouldClose",
+     Pre => W /= Null_Window;
+
+
+
 private
 
    use System.Storage_Elements;
