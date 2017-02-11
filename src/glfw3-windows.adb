@@ -11,9 +11,11 @@ package body GLFW3.Windows is
       return W;
    end;
 
-   function Convert (W : Window) return Address is
+   function Generic_Get_Window_User_Pointer (W : Window) return Element is
+      function Convert is new Ada.Unchecked_Conversion (Address, Element);
    begin
-      return To_Address (W);
+      return Convert (Get_Window_User_Pointer (W));
    end;
+
 
 end;

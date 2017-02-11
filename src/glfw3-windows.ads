@@ -16,8 +16,6 @@ package GLFW3.Windows is
    type Window_Title is new char_array;
    type Window_Close_Flag is new int;
 
-   function Convert (W : Window) return Address;
-
    function Create_Window_Ada (Width : Window_Width; Height : Window_Height; Title : String; Primary : Monitors.Monitor := Monitors.Null_Monitor; Share : Window := Null_Window) return Window;
 
    pragma Warnings (Off);
@@ -78,6 +76,11 @@ package GLFW3.Windows is
      External_Name => "glfwGetWindowUserPointer",
      Pre => W /= Null_Window;
 
+   generic
+      type Element is private;
+   function Generic_Get_Window_User_Pointer (W : Window) return Element;
+
+
    procedure Set_Window_Should_Close (W : Window; Value : int) with
      Import,
      Convention => C,
@@ -88,15 +91,12 @@ package GLFW3.Windows is
 
 private
 
-   use System.Storage_Elements;
+   use System;
 
-   type Window is new Integer_Address;
-   type Monitor is new Integer_Address;
-   type Procedure_Address is new Integer_Address;
+   type Window is new Address;
+   type Monitor is new Address;
+   type Procedure_Address is new Address;
 
-   Null_Window : constant Window := 0;
-   Null_Monitor : constant Monitor := 0;
-
-
+   Null_Window : constant Window := Window (Null_Address);
 
 end;
